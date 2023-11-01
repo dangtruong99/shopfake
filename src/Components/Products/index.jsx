@@ -7,6 +7,7 @@ import laptop from "../Picture/picturelaptop.jpg";
 import macbook from "../Picture/picturemacbook.jpg";
 import keyboardandmouse from "../Picture/picturekeyboardandmouse.jpg";
 import ipad from "../Picture/pictureipad.jpg";
+import Product from "./components/Product";
 
 function Products() {
   const [products, setProducts] = useState([
@@ -82,37 +83,7 @@ function Products() {
           .filter((product) =>
             product.name.toLowerCase().includes(search.toLowerCase())
           )
-          .map((product) => {
-            return (
-              <div className="product">
-                <span>{product.name}</span>
-                <img src={product.image} alt="image-product" />
-                <span>{product.price} $</span>
-                <span>{product.description}</span>
-                <div className="priceProducts">
-                  <button
-                    onClick={decreaseProduct}
-                    style={{
-                      margin: "5px",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    -
-                  </button>
-                  <div>{priceProducts}</div>
-                  <button
-                    onClick={increaseProduct}
-                    style={{
-                      margin: "5px",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+          .map((product) => <Product data={product} /** props.onChange cần thì thêm ở đây *//>)}
       </div>
     </div>
   );

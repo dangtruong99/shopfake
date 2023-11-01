@@ -1,0 +1,24 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: #ccc8c8 solid 2px;
+  /* background-color: #e0dede; */
+  margin: 5px;
+  border-radius: 50px;
+  justify-content: center;
+
+  padding: 10px;
+}
+
+.priceProducts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

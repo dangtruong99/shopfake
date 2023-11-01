@@ -1,0 +1,27 @@
+.taskbar {
+  background-color: red;
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 50px !important;
+  animation: spin 2s infinite ease-in-out;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logout {
+  padding: 5px;
+}

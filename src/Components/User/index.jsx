@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import Taskbar from "../Taskbar";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 function User(props) {
   const [newItem, setNewItem] = useState([]);
@@ -129,11 +130,11 @@ function User(props) {
             position: "fixed",
             right: 20,
             bottom: 20,
-            padding: 15,
+            padding: 10,
           }}
           onClick={scrollUp}
         >
-          ^
+          <AiOutlineArrowUp />
         </button>
       )}
     </div>

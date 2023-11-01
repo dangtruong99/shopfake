@@ -1,24 +1,12 @@
 .products {
   display: flex;
   flex-wrap: wrap;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
 }
 
-.product {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: #ccc8c8 solid 2px;
-  /* background-color: #e0dede; */
-  margin: 5px;
-  border-radius: 50px;
-  justify-content: center;
-
-  padding: 10px;
-}
-
-.priceProducts {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+.products :hover {
+  transform: scale(1.1);
+  opacity: 0.7;
+  border: none;
 }

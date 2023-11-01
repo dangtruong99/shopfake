@@ -1,0 +1,30 @@
+.priceProduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.productDescription {
+  position: absolute;
+  transition: all 0.7s ease-in-out;
+  opacity: 0;
+}
+
+.product:hover .productDescription {
+  bottom: 50%;
+  opacity: 1;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: #ccc8c8 solid 2px;
+  /* background-color: #e0dede; */
+  margin: 5px;
+  border-radius: 50px;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}

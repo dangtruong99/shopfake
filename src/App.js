@@ -4,19 +4,15 @@ import Home from "./Components/Home";
 import { useState } from "react";
 import User from "./Components/User";
 import Products from "./Components/Products";
-
+import Cart from "./Components/Cart";
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
 
+  const onChangeScreen = (screenName) => () => {
+    setChangeScreen(screenName);
+  };
   const toProductsPage = () => {
     setChangeScreen("products");
-  };
-  const toUserPage = () => {
-    setChangeScreen("user");
-  };
-
-  const toLoginPage = () => {
-    setChangeScreen("login");
   };
 
   return (
@@ -36,13 +32,13 @@ function App() {
         </a>
       </header> */}
       <div className="page">
-        <button onClick={toLoginPage} className="page-btn">
+        <button onClick={onChangeScreen("login")} className="page-btn">
           Login
         </button>
-        <button onClick={toProductsPage} className="page-btn">
+        <button onClick={onChangeScreen("products")} className="page-btn">
           Products
         </button>
-        <button onClick={toUserPage} className="page-btn">
+        <button onClick={onChangeScreen("user")} className="page-btn">
           User
         </button>
       </div>
@@ -50,7 +46,9 @@ function App() {
       {changeScreen === "login" ? (
         <Home login={setChangeScreen} />
       ) : changeScreen === "products" ? (
-        <Products />
+        <Products onClickCart={onChangeScreen("cart")} />
+      ) : changeScreen === "cart" ? (
+        <Cart />
       ) : (
         <User logout={setChangeScreen} products={toProductsPage} />
       )}

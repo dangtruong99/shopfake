@@ -3,7 +3,7 @@ import "./style.css";
 import { useEffect } from "react";
 function Product({ data }) {
   const [priceProduct, setpriceProduct] = useState(0);
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState([]);
 
   const increaseProduct = () => {
     setpriceProduct(priceProduct + 1);
@@ -13,14 +13,19 @@ function Product({ data }) {
     setpriceProduct(priceProduct - 1);
   };
 
-  useEffect(() => {}, [cart]);
-
-  const buyProductInCart = () => {
-    const nextCart = priceProduct * data.price;
+  const addToCart = () => {
+    const nextCart = [...cart];
+    nextCart.push({
+      name: data.name,
+      price: data.price,
+      number: priceProduct,
+    });
     setCart(nextCart);
-    console.log(cart);
   };
 
+  useEffect(() => {
+    console.log(cart);
+  });
   return (
     <div className="product">
       <img src={data.image} alt="image-product" />
@@ -50,7 +55,14 @@ function Product({ data }) {
           +
         </button>
       </div>
-      <button onClick={buyProductInCart}>Mua hàng</button>
+      <button
+        onClick={() => {
+          addToCart();
+        }}
+      >
+        Mua hàng
+      </button>
+      {/* <div>{cart}</div> */}
     </div>
   );
 }

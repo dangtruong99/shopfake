@@ -13,8 +13,9 @@ import freezer from "../Picture/picturefreezer.jpg";
 import Product from "./Product/index";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsCart4 } from "react-icons/bs";
+import Footer from "../Footer";
 
-function Products() {
+function Products(props) {
   const [products, setProducts] = useState([
     {
       name: "Phone",
@@ -75,7 +76,6 @@ function Products() {
   ]);
 
   const [search, setSearch] = useState("");
-  const [cart, setCart] = useState();
 
   const searchProductName = (event) => {
     setSearch(event.target.value);
@@ -93,10 +93,13 @@ function Products() {
           border: "none",
         }}
       />
-      <button>
-        <BsCart4 />
-      </button>
-
+      <BsCart4
+        onClick={props.onClickCart}
+        className="page-btn"
+        style={{
+          fontSize: "25px",
+        }}
+      />
       <div className="products">
         {products
           .filter((product) =>
@@ -109,6 +112,7 @@ function Products() {
             />
           ))}
       </div>
+      {/* <Footer /> */}
     </div>
   );
 }

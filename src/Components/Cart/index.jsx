@@ -1,8 +1,9 @@
 import React from "react";
 
-function Cart() {
+function Cart(props) {
   return (
     <div>
+      {/** map ra danh sách product trong giỏ hàng tại đây ... */}
       <div>Tên mặt hàng:</div>
       <div>Giá tiền:</div>
       <div>Số lượng:</div>

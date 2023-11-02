@@ -108,7 +108,7 @@ function Products(props) {
           .map((product) => (
             <Product
               data={product}
-              /** props.onChange cần thì thêm ở đây */
+              onClickBuy={props.onClickBuy}
             />
           ))}
       </div>

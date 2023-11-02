@@ -7,7 +7,14 @@ import Products from "./Components/Products";
 import Cart from "./Components/Cart";
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
+  const [cart, setCart] = useState([] /** thằng này sẽ gồm danh sách các product mà người dùng đã mua */)
 
+  /** thằng này sẽ thực hiện hành động thêm product vào cart */
+  const onClickBuy = (product) =>  {
+    const nextCart = cart.slice().concat(product)
+    setCart(nextCart)
+  }
+  
   const onChangeScreen = (screenName) => () => {
     setChangeScreen(screenName);
   };
@@ -46,9 +53,9 @@ function App() {
       {changeScreen === "login" ? (
         <Home login={setChangeScreen} />
       ) : changeScreen === "products" ? (
-        <Products onClickCart={onChangeScreen("cart")} />
+        <Products onClickCart={onChangeScreen("cart")} onClickBuy={onClickBuy}/>
       ) : changeScreen === "cart" ? (
-        <Cart />
+        <Cart cart={cart}/>
       ) : (
         <User logout={setChangeScreen} products={toProductsPage} />
       )}

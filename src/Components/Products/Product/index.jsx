@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./style.css";
 import { useEffect } from "react";
-function Product({ data }) {
+function Product({ data, onClickBuy }) {
   const [priceProduct, setpriceProduct] = useState(0);
+  /** Không dùng cart trong này nữa */
   const [cart, setCart] = useState([]);
 
   const increaseProduct = () => {
@@ -14,13 +15,15 @@ function Product({ data }) {
   };
 
   const addToCart = () => {
-    const nextCart = [...cart];
-    nextCart.push({
-      name: data.name,
-      price: data.price,
-      number: priceProduct,
-    });
-    setCart(nextCart);
+    onClickBuy(data)
+    /** Logic này đem ra App */
+    // const nextCart = [...cart];
+    // nextCart.push({
+    //   name: data.name,
+    //   price: data.price,
+    //   number: priceProduct,
+    // });
+    // setCart(nextCart);
   };
 
   useEffect(() => {
@@ -56,9 +59,7 @@ function Product({ data }) {
         </button>
       </div>
       <button
-        onClick={() => {
-          addToCart();
-        }}
+        onClick={addToCart}
       >
         Mua hàng
       </button>

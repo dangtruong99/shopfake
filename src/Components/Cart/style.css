@@ -1,0 +1,20 @@
+.cart-container {
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+
+  position: relative;
+}

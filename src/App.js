@@ -7,14 +7,24 @@ import Products from "./Components/Products";
 import Cart from "./Components/Cart";
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
-  const [cart, setCart] = useState([] /** thằng này sẽ gồm danh sách các product mà người dùng đã mua */)
+  const [cart, setCart] = useState(
+    [] /** thằng này sẽ gồm danh sách các product mà người dùng đã mua */
+  );
 
   /** thằng này sẽ thực hiện hành động thêm product vào cart */
-  const onClickBuy = (product) =>  {
-    const nextCart = cart.slice().concat(product)
-    setCart(nextCart)
-  }
-  
+  const onClickBuy = (product) => {
+    const nextCart = cart.slice().concat(product);
+    /** Logic này đem ra App */
+    // const nextCart = [...cart];
+    // nextCart.push({
+    //   name: data.name,
+    //   price: data.price,
+    //   number: priceProduct,
+    // });
+    // setCart(nextCart);
+    setCart(nextCart);
+  };
+
   const onChangeScreen = (screenName) => () => {
     setChangeScreen(screenName);
   };
@@ -53,9 +63,12 @@ function App() {
       {changeScreen === "login" ? (
         <Home login={setChangeScreen} />
       ) : changeScreen === "products" ? (
-        <Products onClickCart={onChangeScreen("cart")} onClickBuy={onClickBuy}/>
+        <Products
+          onClickCart={onChangeScreen("cart")}
+          onClickBuy={onClickBuy}
+        />
       ) : changeScreen === "cart" ? (
-        <Cart cart={cart}/>
+        <Cart cart={cart} returnProductScreen={onChangeScreen("products")} />
       ) : (
         <User logout={setChangeScreen} products={toProductsPage} />
       )}

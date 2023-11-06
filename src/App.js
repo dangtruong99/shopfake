@@ -12,8 +12,8 @@ function App() {
   );
 
   /** thằng này sẽ thực hiện hành động thêm product vào cart */
-  const onClickBuy = (product) => {
-    const nextCart = cart.slice().concat(product);
+  const onClickBuy = (productList) => {
+    const nextCart = cart.concat(productList);
     /** Logic này đem ra App */
     // const nextCart = [...cart];
     // nextCart.push({
@@ -23,6 +23,17 @@ function App() {
     // });
     // setCart(nextCart);
     setCart(nextCart);
+  };
+
+  const onClickRemove = (item) => {
+    const index = cart.findIndex((product) => product === item);
+    if (index < 0) {
+      console.log("Unable to find product", item);
+      return;
+    }
+    const nextProduct = cart.slice();
+    nextProduct.splice(index, 1);
+    setCart(nextProduct);
   };
 
   const onChangeScreen = (screenName) => () => {
@@ -68,7 +79,11 @@ function App() {
           onClickBuy={onClickBuy}
         />
       ) : changeScreen === "cart" ? (
-        <Cart cart={cart} returnProductScreen={onChangeScreen("products")} />
+        <Cart
+          cart={cart}
+          returnProductScreen={onChangeScreen("products")}
+          onClickRemove={onClickRemove}
+        />
       ) : (
         <User logout={setChangeScreen} products={toProductsPage} />
       )}

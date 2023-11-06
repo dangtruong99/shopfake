@@ -1,52 +1,72 @@
 import React, { useState } from "react";
 import "./style.css";
+import { AiOutlineClose } from "react-icons/ai";
 
 function Product({ data, onClickBuy }) {
-  const [priceProduct, setpriceProduct] = useState(0);
+  const [numberProduct, setnumberProduct] = useState(0);
+  const [details, setDetails] = useState(true);
 
   const increaseProduct = () => {
-    setpriceProduct(priceProduct + 1);
+    setnumberProduct(numberProduct + 1);
   };
 
   const decreaseProduct = () => {
-    setpriceProduct(priceProduct - 1);
+    setnumberProduct(numberProduct - 1);
   };
 
   const addToCart = () => {
-    onClickBuy(data);
+    const nextCart = Array.apply(null, Array(numberProduct)).map(() => ({
+      ...data,
+    }));
+    onClickBuy(nextCart);
+  };
+
+  const showDetails = () => {
+    setDetails(!details);
   };
 
   return (
     <div className="product">
+      <div>{data.name}</div>
       <img src={data.image} alt="image-product" />
       <span>{data.price} $</span>
-      <div className="productDescription">
-        <div>{data.name}</div>
-        {data.description}
-      </div>
-      <div className="priceProduct">
-        <button
-          onClick={decreaseProduct}
-          style={{
-            margin: "5px",
-            borderRadius: "50%",
-          }}
-        >
-          -
+
+      {details ? (
+        <button onClick={showDetails} className="details-btn">
+          Thông tin
         </button>
-        <div>{priceProduct}</div>
-        <button
-          onClick={increaseProduct}
-          style={{
-            margin: "5px",
-            borderRadius: "50%",
-          }}
-        >
-          +
-        </button>
-      </div>
-      <button onClick={addToCart}>Mua hàng</button>
-      {/* <div>{cart}</div> */}
+      ) : (
+        <div className="productDescription">
+          <button onClick={showDetails} className="details-btn">
+            <AiOutlineClose />
+          </button>
+          {data.description}
+          <button onClick={addToCart} className="details-btn">
+            Mua hàng
+          </button>
+          <div className="numberProduct">
+            <button
+              onClick={decreaseProduct}
+              style={{
+                margin: "5px",
+                borderRadius: "50%",
+              }}
+            >
+              -
+            </button>
+            <div>{numberProduct}</div>
+            <button
+              onClick={increaseProduct}
+              style={{
+                margin: "5px",
+                borderRadius: "50%",
+              }}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

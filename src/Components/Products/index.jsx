@@ -106,10 +106,7 @@ function Products(props) {
             product.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((product) => (
-            <Product
-              data={product}
-              onClickBuy={props.onClickBuy}
-            />
+            <Product data={product} onClickBuy={props.onClickBuy} />
           ))}
       </div>
       {/* <Footer /> */}

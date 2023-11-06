@@ -5,24 +5,23 @@ import { useState } from "react";
 import User from "./Components/User";
 import Products from "./Components/Products";
 import Cart from "./Components/Cart";
+import Details from "./Components/Details";
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
   const [cart, setCart] = useState(
     [] /** thằng này sẽ gồm danh sách các product mà người dùng đã mua */
   );
+  const [details, setDetails] = useState(null);
 
   /** thằng này sẽ thực hiện hành động thêm product vào cart */
   const onClickBuy = (productList) => {
     const nextCart = cart.concat(productList);
-    /** Logic này đem ra App */
-    // const nextCart = [...cart];
-    // nextCart.push({
-    //   name: data.name,
-    //   price: data.price,
-    //   number: priceProduct,
-    // });
-    // setCart(nextCart);
     setCart(nextCart);
+  };
+
+  const onClickDetails = (product) => {
+    setDetails(product);
+    setChangeScreen("details");
   };
 
   const onClickRemove = (item) => {
@@ -76,7 +75,13 @@ function App() {
       ) : changeScreen === "products" ? (
         <Products
           onClickCart={onChangeScreen("cart")}
+          showDetails={onClickDetails}
+        />
+      ) : changeScreen === "details" ? (
+        <Details
+          details={details}
           onClickBuy={onClickBuy}
+          showDetails={onChangeScreen("products")}
         />
       ) : changeScreen === "cart" ? (
         <Cart

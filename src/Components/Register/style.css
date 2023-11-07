@@ -1,0 +1,23 @@
+.register-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-weight: bold;
+}
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  border-radius: 50px;
+  padding: 100px;
+}

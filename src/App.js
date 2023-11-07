@@ -6,6 +6,7 @@ import User from "./Components/User";
 import Products from "./Components/Products";
 import Cart from "./Components/Cart";
 import Details from "./Components/Details";
+import Register from "./Components/Register";
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
   const [cart, setCart] = useState(
@@ -62,6 +63,9 @@ function App() {
         <button onClick={onChangeScreen("login")} className="page-btn">
           Login
         </button>
+        <button onClick={onChangeScreen("register")} className="page-btn">
+          Register
+        </button>
         <button onClick={onChangeScreen("products")} className="page-btn">
           Products
         </button>
@@ -83,6 +87,8 @@ function App() {
           onClickBuy={onClickBuy}
           showDetails={onChangeScreen("products")}
         />
+      ) : changeScreen === "register" ? (
+        <Register login={setChangeScreen} />
       ) : changeScreen === "cart" ? (
         <Cart
           cart={cart}

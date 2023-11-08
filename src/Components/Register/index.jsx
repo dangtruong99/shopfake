@@ -8,6 +8,7 @@ function Register(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [rewritePasswords, setRewritePasswords] = useState("");
 
   const writeAccount = (event) => {
     setAccount(event.target.value);
@@ -25,6 +26,10 @@ function Register(props) {
     setBirthday(event.target.value);
   };
 
+  const rewrite_passwords = (event) => {
+    setRewritePasswords(event.target.value);
+  };
+
   const registeredForm = () => {
     if (
       account === "user01" &&
@@ -32,6 +37,10 @@ function Register(props) {
       email === "user01@gmail.com"
     ) {
       alert("Account, password and email is available");
+    } else if (email.includes("@", 1)) {
+      alert("Check your email");
+    } else if (password !== rewritePasswords.includes(password)) {
+      alert("Check your password");
     } else {
       props.login("login");
       alert("Register success");
@@ -40,7 +49,7 @@ function Register(props) {
     nextRegisterForm.push({
       account: account,
       password: password,
-      passwordAgain: password,
+      passwordAgain: rewritePasswords,
       email: email,
       birthday: birthday,
     });
@@ -49,32 +58,42 @@ function Register(props) {
     setPassword("");
     setEmail("");
     setBirthday("");
+    setRewritePasswords("");
   };
 
   return (
     <div className="register-background">
       <div className="register-container">
         <h1>ĐĂNG KÝ</h1>
-        <div>
-          Tên tài khoản: <input type="text" onChange={writeAccount} />
+        <div className="mini-container">
+          <span>Tên tài khoản:</span>{" "}
+          <input type="text" onChange={writeAccount} value={account} />
+        </div>
+        <div className="mini-container">
+          <span>Email:</span>{" "}
+          <input type="email" onChange={writeEmail} value={email} />
+        </div>
+        <div className="mini-container">
+          <span>Mật khẩu:</span>{" "}
+          <input type="password" onChange={writePassword} value={password} />
+        </div>
+        <div className="mini-container">
+          <span>Nhập lại mật khẩu:</span>{" "}
+          <input
+            type="password"
+            value={rewritePasswords}
+            onChange={rewrite_passwords}
+          />
+        </div>
+        <div className="mini-container">
+          <span>Số điện thoại: </span>
+          <input type="tel" />
         </div>
         <div>
-          Email: <input type="email" onChange={writeEmail} />
+          <span>Giới tính: Nam </span>
+          <input type="radio" /> <span>Nữ</span> <input type="radio" />
+          <span>Ngày sinh:</span> <input type="date" onChange={writeBirthday} />
         </div>
-        <div>
-          Mật khẩu: <input type="password" onChange={writePassword} />
-        </div>
-        <div>
-          Nhập lại mật khẩu: <input type="password" />
-        </div>
-        <div>
-          Số điện thoại <input type="tel" />
-        </div>
-        <div>
-          Giới tính: Nam <input type="radio" /> Nữ <input type="radio" />
-          Ngày sinh: <input type="date" onChange={writeBirthday} />
-        </div>
-
         <button onClick={registeredForm}>Đăng ký</button>
       </div>
     </div>

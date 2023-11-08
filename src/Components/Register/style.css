@@ -27,5 +27,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 75%;
+  width: 80%;
+}
+
+.btn-register {
+  border: 1px solid rgb(214, 213, 213);
+  border-radius: 10px;
+  padding: 10px 25px;
+}
+
+.registerBtn {
+  padding: 10px;
+  border: solid 1px rgb(132, 167, 168);
+  background: fixed rgb(117, 184, 186);
+  font-size: medium;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.registerBtn:hover {
+  font-weight: bold;
+  background: yellowgreen;
+  border-radius: none;
 }

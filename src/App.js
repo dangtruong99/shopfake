@@ -7,6 +7,7 @@ import Products from "./Components/Products";
 import Cart from "./Components/Cart";
 import Details from "./Components/Details";
 import Register from "./Components/Register";
+
 function App() {
   const [changeScreen, setChangeScreen] = useState("login");
   const [cart, setCart] = useState(

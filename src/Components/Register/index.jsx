@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.css";
 import { useState } from "react";
+import { BsEyeFill } from "react-icons/bs";
+import { BsEyeSlash } from "react-icons/bs";
 
 function Register(props) {
   const [formRegister, setFormRegister] = useState([]);
@@ -10,6 +12,7 @@ function Register(props) {
   const [birthday, setBirthday] = useState("");
   const [rewritePassword, setRewritePassword] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [seePassword, setSeePassword] = useState(true);
 
   const writeAccount = (event) => {
     setAccount(event.target.value);
@@ -17,6 +20,10 @@ function Register(props) {
 
   const writePassword = (event) => {
     setPassword(event.target.value);
+  };
+
+  const readPassword = () => {
+    setSeePassword(!seePassword);
   };
 
   const writeEmail = (event) => {
@@ -95,21 +102,59 @@ function Register(props) {
         </div>
         <div className="mini-container">
           <span>Mật khẩu:</span>{" "}
-          <input
-            type="password"
-            onChange={writePassword}
-            value={password}
-            className="btn-register"
-          />
+          {seePassword ? (
+            <div>
+              <input
+                type="password"
+                onChange={writePassword}
+                value={password}
+                className="btn-register"
+              />
+              <button onClick={readPassword} className="eyes-read-password">
+                <BsEyeFill />
+              </button>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                onChange={writePassword}
+                value={password}
+                className="btn-register"
+              />
+              <button onClick={readPassword} className="eyes-read-password">
+                <BsEyeSlash />
+              </button>
+            </div>
+          )}
         </div>
         <div className="mini-container">
           <span>Nhập lại mật khẩu:</span>{" "}
-          <input
-            type="password"
-            value={rewritePassword}
-            onChange={rewrite_password}
-            className="btn-register"
-          />
+          {seePassword ? (
+            <div>
+              <input
+                type="password"
+                value={rewritePassword}
+                onChange={rewrite_password}
+                className="btn-register"
+              />
+              <button onClick={readPassword} className="eyes-read-password">
+                <BsEyeFill />
+              </button>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                onChange={rewrite_password}
+                value={rewritePassword}
+                className="btn-register"
+              />
+              <button onClick={readPassword} className="eyes-read-password">
+                <BsEyeSlash />
+              </button>
+            </div>
+          )}
         </div>
         <div className="mini-container">
           <span>Số điện thoại: </span>

@@ -6,6 +6,30 @@ import { useState } from "react";
 import Password from "./Password";
 
 /**
+ * Bài tập:
+ * 3. Register thành công -> [Màn hình Send Mail] 
+ * 
+ * [Màn hình Send Mail] 
+ * - [Text] Vui lòng kiểm tra email <<email>> của khách hàng nhập vô
+ * - Sau 3s, chuyển sang [Màn hình Activated Success]
+ * 
+ * [Màn hình Activated Success]
+ * - [Text] Bạn đã kích hoạt thành công
+ * - [Button] Quay về Trang chủ -> về Home 
+ * 
+ * 4. [Issue] không thể nhấn vô tab Top Tab bar khi ở màn hình Register 
+ * 5. Thêm màn hình [Màn hình Thêm mặt hàng]
+ * 
+ * [Màn hình Home]
+ * - Thêm nút (+) nổi ở phía Phải Dưới cùng của màn hình -> Qua [Màn hình Thêm mặt hàng]
+ * 
+ * [Màn hình Thêm mặt hàng]
+ * - Gồm các fields: Tên mặt hàng, Giá tiền, Hình ảnh, Ngày đăng
+ * - Nút thêm mặt hàng -> Thêm 1 mặt hàng vào Home
+ * - Flow Failed: Thiếu 1 trong tất cả các fields trên thì không cho Passed
+ */
+
+/**
  * ** Lúc nào cần tách Component_Con:
  * 1. [Để dễ đọc & Để tối ưu hiệu suất] Xử lý những khối Logic riêng và cần useState riêng
  * -> Mỗi Component sẽ giải quyết 1 vấn đề nhất định
